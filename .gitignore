@@ -1,0 +1,51 @@
+# ─────────────────────────────────────────────────────────
+# 고객 도면·데이터는 절대 커밋하지 마십시오.
+# 삼성전자 납품 관련 도면·품번이 공개 저장소로 흘러가면
+# 되돌릴 수 없습니다. 저장소는 Private 으로 유지하십시오.
+# ─────────────────────────────────────────────────────────
+*.dxf
+*.dwg
+*.dwf
+*.step
+*.stp
+*.iges
+*.igs
+*.sldprt
+*.sldasm
+*.ipt
+*.iam
+*.catpart
+*.prt
+
+# 사내 문서 — 과제 세부내역·담당자 실명·고객사 정보가 들어 있음
+한국성전_*.xlsx
+*AX컨설팅*
+*부서별과제*
+
+# 설계표준 시트(실제 값이 들어간 것)
+설계표준시트.xlsx
+*_설계표준*.xlsx
+
+# 실행 산출물
+*_layered.dxf
+*_jig.dxf
+*_report.csv
+*_preview.png
+*.png
+
+# 단, 예시·테스트용으로 의도적으로 올리는 파일은 아래처럼 예외 처리
+!docs/example_*.png
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Claude Code 로컬 설정 (PC마다 다름)
+.claude/
+
+# OS
+Thumbs.db
+.DS_Store
