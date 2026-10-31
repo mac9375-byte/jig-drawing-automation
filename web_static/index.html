@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JIG 설계 자동화</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+  <h1>JIG 기본도면 만들기</h1>
+  <span class="badge">참조 구현 · 미완성</span>
+</header>
+
+<div class="notice">
+  <strong>※ 설계표준 시트의 값이 예시(더미)인 동안에는 만들어지는 지그 형상에 공학적 의미가 없습니다.</strong>
+  실제 설계표준으로 바꾼 뒤에 사용하십시오. 생성된 도면은 <strong>설계자의 수정·승인</strong>을 거쳐야 합니다.
+</div>
+
+<main>
+  <section class="card">
+    <h2>1. 입력</h2>
+
+    <div class="field">
+      <label for="product">제품도면 <span class="hint">(.dxf)</span></label>
+      <input type="file" id="product" accept=".dxf,.dwg">
+    </div>
+
+    <div class="field">
+      <label for="rules">설계표준 시트 <span class="hint">(.xlsx)</span></label>
+      <input type="file" id="rules" accept=".xlsx">
+      <p class="sub">
+        시트가 없으십니까?
+        <button type="button" class="link" id="btn-sheet">빈 시트 내려받기</button>
+        — 받은 뒤 노란 칸을 실제 설계표준으로 채우십시오.
+      </p>
+    </div>
+
+    <div class="field">
+      <label for="jigtype">지그 타입</label>
+      <input type="text" id="jigtype" value="SMT 수대" placeholder="예: SMT 수대 / TAPE JIG">
+    </div>
+
+    <details class="adv">
+      <summary>고급 설정</summary>
+      <div class="grid">
+        <label>홀 판정 최대 <input type="number" id="holemax" value="30" step="0.5" min="0"> mm</label>
+        <label>홀 판정 최소 <input type="number" id="holemin" value="1.5" step="0.1" min="0"> mm</label>
+        <label class="wide">색상 힌트
+          <input type="text" id="colorhint" placeholder="예: 1=CENTER,8=HIDDEN">
+        </label>
+      </div>
+      <p class="sub">색상으로 선 용도를 구분하는 도면일 때만 쓰십시오.</p>
+    </details>
+
+    <button id="btn-run" class="primary">지그 도면 만들기</button>
+    <span id="spinner" class="spinner" hidden></span>
+  </section>
+
+  <section class="card" id="result-card" hidden>
+    <h2>2. 결과</h2>
+    <div id="result"></div>
+  </section>
+</main>
+
+<footer>
+  이 서버는 <strong>이 PC 안에서만</strong> 동작하며, 도면은 외부로 전송되지 않습니다.
+  &nbsp;·&nbsp; <a href="/api/docs" target="_blank">API 문서</a>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
